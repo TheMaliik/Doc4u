@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<StackPane fx:id="rootPane" xmlns="http://javafx.com/javafx"
+           xmlns:fx="http://javafx.com/fxml"
+           fx:controller="admindashboard.LivraisonManagementController"
+           prefHeight="800.0" prefWidth="950.0">
+
+    <AnchorPane style="-fx-background-color: #1a1a1a;">
+        <VBox spacing="20" AnchorPane.topAnchor="0" AnchorPane.leftAnchor="0"
+              AnchorPane.rightAnchor="0" AnchorPane.bottomAnchor="0">
+
+            <!-- Header -->
+            <HBox alignment="CENTER_LEFT" styleClass="management-header">
+                <Label text="Livraison Management" styleClass="management-title"/>
+                <Region HBox.hgrow="ALWAYS"/>
+                <JFXButton fx:id="addButton" text="Add New Livraison"
+                           styleClass="action-button"
+                           onAction="#handleAddLivraison"/>
+            </HBox>
+
+            <!-- Search Bar -->
+            <HBox spacing="10" style="-fx-padding: 0 20;">
+                <JFXTextField fx:id="searchField" promptText="Search livraisons..."
+                              styleClass="search-field"
+                              style="-fx-text-fill: white; -fx-prompt-text-fill: #808080;"
+                              HBox.hgrow="ALWAYS"/>
+            </HBox>
+
+            <!-- Livraison Cards Container -->
+            <ScrollPane fitToWidth="true" style="-fx-background: #1a1a1a; -fx-padding: 20;">
+                <FlowPane fx:id="livraisonCardsContainer" hgap="20" vgap="20"/>
+            </ScrollPane>
+        </VBox>
+    </AnchorPane>
+
+    <!-- Add/Edit Livraison Dialog -->
+    <JFXDialog fx:id="livraisonDialog" styleClass="dialog">
+        <VBox spacing="15" style="-fx-padding: 20; -fx-background-color: #262626;">
+            <Label text="Livraison Details" styleClass="dialog-title" style="-fx-text-fill: white;"/>
+
+            <VBox spacing="5">
+                <JFXTextField fx:id="idField" promptText="ID"
+                              style="-fx-text-fill: white; -fx-prompt-text-fill: #808080;"/>
+                <Label fx:id="idErrorLabel" style="-fx-text-fill: #ff4444; -fx-font-size: 11px;" managed="false" visible="false"/>
+            </VBox>
+
+            <VBox spacing="5">
+                <JFXTextField fx:id="orderIdField" promptText="Order ID"
+                              style="-fx-text-fill: white; -fx-prompt-text-fill: #808080;"/>
+                <Label fx:id="orderIdErrorLabel" style="-fx-text-fill: #ff4444; -fx-font-size: 11px;" managed="false" visible="false"/>
+            </VBox>
+
+            <VBox spacing="5">
+                <JFXTextField fx:id="adresseLivraisonField" promptText="Adresse Livraison"
+                              style="-fx-text-fill: white; -fx-prompt-text-fill: #808080;"/>
+                <Label fx:id="adresseLivraisonErrorLabel" style="-fx-text-fill: #ff4444; -fx-font-size: 11px;" managed="false" visible="false"/>
+            </VBox>
+
+            <VBox spacing="5">
+                <JFXTextField fx:id="dateLivraisonField" promptText="Date Livraison"
+                              style="-fx-text-fill: white; -fx-prompt-text-fill: #808080;"/>
+                <Label fx:id="dateLivraisonErrorLabel" style="-fx-text-fill: #ff4444; -fx-font-size: 11px;" managed="false" visible="false"/>
+            </VBox>
+
+            <VBox spacing="5">
+                <JFXTextField fx:id="latitudeField" promptText="Latitude"
+                              style="-fx-text-fill: white; -fx-prompt-text-fill: #808080;"/>
+                <Label fx:id="latitudeErrorLabel" style="-fx-text-fill: #ff4444; -fx-font-size: 11px;" managed="false" visible="false"/>
+            </VBox>
+
+            <VBox spacing="5">
+                <JFXTextField fx:id="numeroTelephoneField" promptText="Numéro Téléphone Transporteur"
+                              style="-fx-text-fill: white; -fx-prompt-text-fill: #808080;"/>
+                <Label fx:id="numeroTelephoneErrorLabel" style="-fx-text-fill: #ff4444; -fx-font-size: 11px;" managed="false" visible="false"/>
+            </VBox>
+
+            <VBox spacing="5">
+                <JFXTextField fx:id="transporteurField" promptText="Transporteur"
+                              style="-fx-text-fill: white; -fx-prompt-text-fill: #808080;"/>
+                <Label fx:id="transporteurErrorLabel" style="-fx-text-fill: #ff4444; -fx-font-size: 11px;" managed="false" visible="false"/>
+            </VBox>
+
+            <HBox spacing="10" alignment="CENTER_RIGHT">
+                <JFXButton text="Cancel" onAction="#handleCancel" style="-fx-text-fill: #808080;"/>
+                <JFXButton text="Save" onAction="#handleSave" style="-fx-background-color: #FF6B00; -fx-text-fill: white;"/>
+            </HBox>
+        </VBox>
+    </JFXDialog>
+</StackPane>
